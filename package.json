@@ -1,5 +1,5 @@
 {
-  "name": "andycao/test-package",
+  "name": "@andycao-npm/test-package",
   "version": "0.0.2",
   "description": "A simple npm package for demonstration purposes and use in a Node.js app.",
   "main": "index.js",
@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git@github.com:andycao/testPackage.git"
   },
-  "author": "",
+  "author": "andycao",
   "license": "MIT",
   "keywords": [
     "node.js",
