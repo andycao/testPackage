@@ -1,24 +1,60 @@
 {
-  "name": "@andycao-npm/test-package",
-  "version": "0.0.2",
-  "description": "A simple npm package for demonstration purposes and use in a Node.js app.",
-  "main": "index.js",
+  "name": "@andycao-npm/modern-npm-package",
+  "version": "0.0.1",
+  "description": "An npm package for demonstration purposes using TypeScript to build for the ECMAScript Module format (i.e. ESM or ES Module). It can be used in Node.js and browser applications.",
+  "type": "module",
+  "types": "./lib/types/index.d.ts",
+  "main": "./lib/index.js",
+  "files": [
+    "lib/**/*"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "del-cli ./lib",
+    "build": "npm run clean && tsc -p ./tsconfig.json",
+    "test": "node --experimental-strip-types --test",
+    "semantic-release": "semantic-release",
+    "prepack": "npm run build",
+    "pack": "npm build && npm pack"
   },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:andycao/testPackage.git"
+  "release": {
+    "branches": [
+      "main"
+    ],
+    "dryRun": true,
+    "plugins": [
+      [
+        "@semantic-release/npm",
+        {
+          "npmPublish": false
+        }
+      ]
+    ]
   },
-  "author": "andycao",
-  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
-    "node.js",
-    "javascript",
     "npm",
-    "package",
+    "javascript",
+    "typescript",
+    "esm",
+    "cjs",
+    "nodejs",
+    "commonjs",
+    "ecmascript",
+    "beginner",
     "example",
-    "demo",
-    "hello world"
-  ]
+    "demonstration"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {},
+  "devDependencies": {
+    "@types/node": "^22.12.0",
+    "del-cli": "^6.0.0",
+    "semantic-release": "^24.2.1",
+    "typescript": "^5.7.3"
+  },
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e",
+  "dependencies": {}
 }
